@@ -1,8 +1,9 @@
 .profile {
   background-color: #000;
-  position: relative;
   display: flex;
-  margin-top: 40px;
+  margin: 40px 200px 0 200px;
+  width: 880px;
+  height: 120px;
 }
 
 .profile__avatar {
@@ -48,7 +49,13 @@
   background-repeat: no-repeat;
   background-position: center;
   background-color: transparent;
-  margin: 35px 0 86px 165px;
+  margin: 13px 0 14px 165px;
+  background-color: #000;
+  transition: background-image 0s linear;
+}
+.profile__add-button:hover {
+  background-image: url("../images/add-button-hover.png");
+  border: 2px solid #a3a3a3;
 }
 
 .profile__edit-button {
@@ -58,4 +65,11 @@
   height: 24px;
   border: 1px solid white;
   margin-left: 18px;
+  background-color: #000;
+  transition: background-image 0s linear;
+}
+
+.profile__edit-button:hover {
+  background-image: url("../images/edit-button-hover.png");
+  border: 1px solid #a3a3a3;
 }
