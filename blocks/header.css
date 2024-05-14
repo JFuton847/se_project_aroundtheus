@@ -1,14 +1,24 @@
 .header {
-  width: 880px;
-  height: 74px;
   background-color: #000;
   border-bottom: 1px solid #545454;
-  margin: 45px 200px 0 200px;
+  padding-top: 45px;
 }
 
 .header__logo {
   width: 173px;
   height: 33px;
-  position: relative;
   padding-bottom: 41px;
+}
+
+@media screen and (max-width: 320px) {
+  .header {
+    border-bottom: 1px solid #545454;
+    width: 100%;
+  }
+
+  .header__logo {
+    padding: 0 152px 32px 27px;
+    width: 126px;
+    height: 24px;
+  }
 }

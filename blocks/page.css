@@ -1,5 +1,15 @@
 .page {
   color: #fff;
-  font-family: Inter, Arial, sans-serif;
-  margin: 45px 200px 67px 200px;
+  font-family: "Inter", Arial, sans-serif;
+  max-width: 880px;
+  padding: 0 20px;
+  min-height: 100vh;
+  background-color: #000;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 320px) {
+  .page {
+    padding: 0;
+  }
 }

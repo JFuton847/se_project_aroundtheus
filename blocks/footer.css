@@ -1,13 +1,22 @@
 .footer {
-  margin: 0px 562px 60px 200px;
+  margin: 67px 562px 60px 0;
 }
 
 .footer__copyright {
   color: #545454;
   display: flex;
-  width: 318px;
-  height: 18px;
+  /* width: 318px;
+  height: 18px; */
   font-size: 18px;
   font-weight: 400;
   line-height: 1.21px;
+}
+
+@media screen and (max-width: 800px) {
+  .footer {
+    margin: 0 auto;
+  }
+  .footer__copyright {
+    margin: 48px 19px 36px;
+  }
 }
