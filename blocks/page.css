@@ -8,7 +8,7 @@
   margin: 0 auto;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 635px) {
   .page {
     padding: 0;
   }

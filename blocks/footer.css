@@ -4,19 +4,33 @@
 
 .footer__copyright {
   color: #545454;
-  display: flex;
-  /* width: 318px;
-  height: 18px; */
   font-size: 18px;
   font-weight: 400;
   line-height: 1.21px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 934px) {
   .footer {
     margin: 0 auto;
   }
   .footer__copyright {
-    margin: 48px 19px 36px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.94px;
+    margin: 48px 0 36px;
+  }
+}
+
+@media screen and (max-width: 635px) {
+  .footer {
+    margin: 0 auto;
+    display: flex;
+    justify-content: start;
+  }
+  .footer__copyright {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.94px;
+    margin: 48px 0 36px 19px;
   }
 }
