@@ -117,3 +117,17 @@
   height: 282px;
   border-radius: 10px 10px 0 0;
 }
+
+@media screen and (max-width: 934px) {
+  .card__image-button {
+    background-size: contain;
+    background-position: center;
+  }
+}
+
+@media screen and (max-width: 635px) {
+  .card__image-button {
+    background-size: contain;
+    background-position: center;
+  }
+}
