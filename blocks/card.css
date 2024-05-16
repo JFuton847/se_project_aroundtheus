@@ -122,7 +122,7 @@
 
 @media screen and (max-width: 934px) {
   .card__image-button {
-    background-size: 100%;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     width: 21px;
@@ -132,7 +132,7 @@
 
 @media screen and (max-width: 635px) {
   .card__image-button {
-    background-size: 100%;
+    background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
     width: 21px;
