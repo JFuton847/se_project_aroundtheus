@@ -77,11 +77,11 @@
   height: 18px;
   border-style: none;
   background-color: #fff;
-  transition: background-image 0.3s linear;
+  transition: opacity 0.4s ease;
 }
 
 .card__image-button:hover {
-  background-image: url("../images/heart-hover.svg");
+  opacity: 0.6;
 }
 
 .card__image-yosemite {
@@ -122,7 +122,7 @@
 
 @media screen and (max-width: 934px) {
   .card__image-button {
-    background-size: contain;
+    background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
     width: 21px;
@@ -132,7 +132,7 @@
 
 @media screen and (max-width: 635px) {
   .card__image-button {
-    background-size: contain;
+    background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
     width: 21px;
