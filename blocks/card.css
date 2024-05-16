@@ -70,7 +70,9 @@
 
 .card__image-button {
   background-image: url("../images/heart.svg");
-  background-size: cover;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   width: 21px;
   height: 18px;
   border-style: none;
