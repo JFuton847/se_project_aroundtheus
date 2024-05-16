@@ -50,6 +50,8 @@
   height: 50px;
   margin-top: 17px;
   margin-left: auto;
+  /* margin-left: 165px; */
+  justify-self: end;
   background-image: url("../images/add-button.png");
   background-repeat: no-repeat;
   background-position: center;
@@ -146,7 +148,6 @@
     padding-top: 30px;
     padding-bottom: 18px;
     padding-right: 30px;
-    flex-wrap: wrap;
     max-width: 211px;
   }
 
@@ -164,6 +165,8 @@
 
   .profile__name {
     max-width: 196px;
+    font-size: 22px;
+    font-weight: 400;
   }
 
   .profile__title {

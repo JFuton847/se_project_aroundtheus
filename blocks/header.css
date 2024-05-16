@@ -12,7 +12,9 @@
 
 @media screen and (max-width: 635px) {
   .header {
-    border-bottom: 1px solid #545454;
+    /* display: flex;
+    justify-content: start; */
+    margin: 0 auto;
     width: 100%;
   }
 
