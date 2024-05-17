@@ -16,7 +16,6 @@
   }
   .footer__copyright {
     font-size: 14px;
-    font-weight: 400;
     line-height: 16.94px;
     margin: 48px 0 36px;
   }
@@ -24,12 +23,6 @@
 
 @media screen and (max-width: 635px) {
   .footer {
-    margin: 0 auto;
     max-width: 282px;
-  }
-  .footer__copyright {
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 16.94px;
   }
 }

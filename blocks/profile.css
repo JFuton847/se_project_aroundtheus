@@ -9,6 +9,7 @@
   height: 120px;
   border-radius: 50%;
   grid-area: avatar;
+  object-fit: cover;
 }
 
 .profile__info {
@@ -60,6 +61,7 @@
 
 .profile__add-button:hover {
   opacity: 0.6;
+  cursor: pointer;
 }
 
 .profile__edit-button {
@@ -79,6 +81,7 @@
 
 .profile__edit-button:hover {
   opacity: 0.6;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 934px) {
@@ -88,9 +91,6 @@
 
   .profile__info {
     margin-left: 0;
-    display: grid;
-    grid-template-columns: 1fr min-content fit-content(24px);
-    grid-template-rows: auto auto;
     grid-template-areas:
       "avatar . . ."
       "avatar name name edit-button"
@@ -108,38 +108,26 @@
   .profile__title {
     font-size: 14px;
     line-height: 16.94px;
-    font-weight: 400;
     text-align: center;
   }
 
   .profile__edit-button {
     background-image: url("../images/edit-button-small.png");
-    background-color: transparent;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
     width: 18px;
     height: 18px;
     margin-left: 10px;
     margin-top: 2px;
   }
   .profile__add-button {
-    border: 2px solid #fff;
-    width: 150px;
-    height: 50px;
     margin-top: 38px;
   }
 
   .profile__avatar {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
     margin: 0;
   }
 }
 @media screen and (max-width: 635px) {
   .profile {
-    display: flex;
     flex-direction: column;
   }
 
@@ -157,14 +145,7 @@
 
   .profile__add-button {
     margin: 0 auto;
-    border: 2px solid #fff;
     width: 282px;
-    height: 50px;
-  }
-
-  .profile__add-button:hover {
-    width: 282px;
-    height: 50px;
   }
 
   .profile__name {
@@ -180,9 +161,6 @@
 
   .profile__edit-button {
     background-image: url("../images/edit-button-small.png");
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
     width: 18px;
     height: 18px;
     margin-left: 10px;

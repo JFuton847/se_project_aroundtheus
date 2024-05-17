@@ -12,77 +12,28 @@
 
 .card {
   background-color: #fff;
-  border-radius: 13px 13px 10px 10px;
-  height: 361px;
-  width: 281px;
+  overflow: hidden;
+  border-radius: 10px 10px 10px 10px;
+  min-height: 361px;
+  width: 100%;
   box-sizing: border-box;
 }
-
-/* .card__text-yosemite {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 28px;
-}
-
-.card__text-lake-louise {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 79px;
-}
-
-.card__text-bald-mountains {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 34px;
-}
-
-.card__text-latemar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 121px;
-}
-
-.card__text-vanoise {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2px;
-}
-
-.card__text-vanoise-p {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  max-width: 219px;
-  max-height: 29px;
-}
-
-.card__text-lago {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 54px;
-} */
 
 .card__text-container {
   display: flex;
   align-items: center;
-  /* margin: 0 auto; */
 }
 
 .card__text {
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
+  width: 190px;
+  margin: 0 auto;
+}
+
+.card__text-p {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  width: 190px;
-  margin: 0 auto;
+  width: 210px;
 }
 
 .card__image-button {
@@ -95,10 +46,12 @@
   border-style: none;
   background-color: #fff;
   transition: opacity 0.4s ease;
+  margin-right: 20px;
 }
 
 .card__image-button:hover {
   opacity: 0.6;
+  cursor: pointer;
 }
 
 .card__image {
