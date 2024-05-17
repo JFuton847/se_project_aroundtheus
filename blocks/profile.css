@@ -42,6 +42,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  max-width: 71px;
 }
 
 .profile__add-button {
@@ -108,7 +109,7 @@
   .profile__title {
     font-size: 14px;
     line-height: 16.94px;
-    text-align: center;
+    margin-left: 30px;
   }
 
   .profile__edit-button {
@@ -156,7 +157,8 @@
 
   .profile__title {
     margin-top: 14px;
-    margin-left: 30px;
+    margin-left: 0;
+    justify-self: center;
   }
 
   .profile__edit-button {
