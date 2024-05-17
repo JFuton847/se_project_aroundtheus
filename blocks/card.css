@@ -22,18 +22,18 @@
 .card__text-container {
   display: flex;
   align-items: center;
-}
-
-.card__text {
-  width: 190px;
   margin: 0 auto;
 }
 
-.card__text-p {
+.card__title {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  width: 210px;
+  max-width: 75%;
+  margin-left: 20px;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29.05px;
 }
 
 .card__image-button {
@@ -46,16 +46,16 @@
   border-style: none;
   background-color: #fff;
   transition: opacity 0.4s ease;
+  margin-left: auto;
   margin-right: 20px;
 }
 
 .card__image-button:hover {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: pointer;
 }
 
 .card__image {
   width: 282px;
   height: 282px;
-  border-radius: 10px 10px 0 0;
 }
