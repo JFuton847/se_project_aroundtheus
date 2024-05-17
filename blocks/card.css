@@ -1,4 +1,4 @@
-.card__container {
+.cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, 282px);
   grid-gap: 20px 17px;
@@ -10,7 +10,7 @@
   color: #000000;
 }
 
-.card__content {
+.card {
   background-color: #fff;
   border-radius: 13px 13px 10px 10px;
   height: 361px;
@@ -18,7 +18,7 @@
   box-sizing: border-box;
 }
 
-.card__text-yosemite {
+/* .card__text-yosemite {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -66,6 +66,23 @@
   justify-content: center;
   align-items: center;
   gap: 54px;
+} */
+
+.card__text-container {
+  display: flex;
+  align-items: center;
+  /* margin: 0 auto; */
+}
+
+.card__text {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 190px;
+  margin: 0 auto;
 }
 
 .card__image-button {
@@ -84,58 +101,8 @@
   opacity: 0.6;
 }
 
-.card__image-yosemite {
+.card__image {
   width: 282px;
   height: 282px;
   border-radius: 10px 10px 0 0;
-}
-
-.card__image-lake-louise {
-  width: 282px;
-  height: 282px;
-  border-radius: 10px 10px 0 0;
-}
-
-.card__image-bald-mountains {
-  width: 282px;
-  height: 282px;
-  border-radius: 10px 10px 0 0;
-}
-
-.card__image-latemar {
-  width: 282px;
-  height: 282px;
-  border-radius: 10px 10px 0 0;
-}
-
-.card__image-vanoise {
-  width: 282px;
-  height: 282px;
-  border-radius: 10px 10px 0 0;
-}
-
-.card__image-lago {
-  width: 282px;
-  height: 282px;
-  border-radius: 10px 10px 0 0;
-}
-
-@media screen and (max-width: 934px) {
-  .card__image-button {
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 21px;
-    height: 18px;
-  }
-}
-
-@media screen and (max-width: 635px) {
-  .card__image-button {
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 21px;
-    height: 18px;
-  }
 }
