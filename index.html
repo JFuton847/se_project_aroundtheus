@@ -41,7 +41,10 @@
           />
           <div class="card__text-container">
             <h3 class="card__title">Yosemite Valley</h3>
-            <button class="card__image-button" type="button"></button>
+            <button
+              class="card__image-button card__image-button_active"
+              type="button"
+            ></button>
           </div>
         </div>
         <div class="card">
@@ -52,7 +55,10 @@
           />
           <div class="card__text-container">
             <h3 class="card__title">Lake Louise</h3>
-            <button class="card__image-button" type="button"></button>
+            <button
+              class="card__image-button card__image-button_active"
+              type="button"
+            ></button>
           </div>
         </div>
         <div class="card">
@@ -63,14 +69,20 @@
           />
           <div class="card__text-container">
             <h3 class="card__title">Bald Mountains</h3>
-            <button class="card__image-button" type="button"></button>
+            <button
+              class="card__image-button card__image-button_active"
+              type="button"
+            ></button>
           </div>
         </div>
         <div class="card">
           <img src="./images/latemar.jpg" alt="Latemar" class="card__image" />
           <div class="card__text-container">
             <h3 class="card__title">Latemar</h3>
-            <button class="card__image-button" type="button"></button>
+            <button
+              class="card__image-button card__image-button_active"
+              type="button"
+            ></button>
           </div>
         </div>
         <div class="card">
@@ -81,7 +93,10 @@
           />
           <div class="card__text-container">
             <h3 class="card__title">Vanoise National Park</h3>
-            <button class="card__image-button" type="button"></button>
+            <button
+              class="card__image-button card__image-button_active"
+              type="button"
+            ></button>
           </div>
         </div>
         <div class="card">
@@ -92,7 +107,10 @@
           />
           <div class="card__text-container">
             <h3 class="card__title">Lago di Braies</h3>
-            <button class="card__image-button" type="button"></button>
+            <button
+              class="card__image-button card__image-button_active"
+              type="button"
+            ></button>
           </div>
         </div>
       </section>
@@ -100,6 +118,29 @@
     <footer class="footer">
       <p class="footer__copyright">&copy; 2022 Around The U.S.</p>
     </footer>
+
+    <div class="modal modal_opened">
+      <div class="modal__container">
+        <button class="modal__close-button"></button>
+        <h2 class="modal__heading">Edit profile</h2>
+        <form class="modal__form">
+          <input
+            type="text"
+            name="name"
+            class="modal__form-input"
+            placeholder="Name"
+          />
+          <input
+            type="text"
+            name="title"
+            class="modal__form-input"
+            placeholder="Description"
+          />
+          <button class="modal__save-button">Save</button>
+        </form>
+      </div>
+    </div>
+
     <script src="./scripts/index.js"></script>
   </body>
 </html>
