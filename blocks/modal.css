@@ -8,7 +8,7 @@
   bottom: 0;
   right: 0;
   z-index: 999;
-  padding: 0 19px;
+  /* padding: 0 12px; */
 }
 
 .modal_opened {
@@ -88,10 +88,9 @@
 
 @media screen and (max-width: 635px) {
   .modal__container {
-    width: 88.12%;
+    width: 88.12%px;
     height: 322px;
-    padding: 0 19px;
-    margin-top: 118px;
+    margin-top: 115px;
   }
 
   .modal__heading {
@@ -104,7 +103,7 @@
 
   .modal__close-button {
     position: absolute;
-    top: -39.62px;
+    top: -32px;
     right: 8px;
     width: 26px;
     height: 26px;
@@ -113,5 +112,12 @@
   .modal__save-button {
     width: 84.4%;
     height: 46px;
+  }
+}
+
+@media screen and (max-width: 595px) {
+  .modal__container {
+    width: 282px;
+    height: 322px;
   }
 }
