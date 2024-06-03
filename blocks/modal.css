@@ -120,4 +120,11 @@
     width: 282px;
     height: 322px;
   }
+
+  .modal__heading {
+    line-height: 21.78px;
+    font-size: 18px;
+    margin-top: 25px;
+    margin-bottom: 75px;
+  }
 }
