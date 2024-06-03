@@ -20,7 +20,7 @@
   background-color: #fff;
   border-radius: 10px;
   margin: auto;
-  padding: 36px 36px 0;
+  /* padding: 36px 36px 0; */
   width: 430px;
   height: 330px;
 }
@@ -66,13 +66,11 @@
   font-size: 14px;
   line-height: 16.94px;
   padding-bottom: 13.26px;
-  /* width: 358px; */
   width: 83.25%;
 }
 
 .modal__save-button {
-  margin-top: 5px;
-  /* width: 358px; */
+  margin-top: 13px;
   width: 83.25%;
   height: 50.15px;
   border-radius: 2px;
@@ -90,8 +88,18 @@
 
 @media screen and (max-width: 635px) {
   .modal__container {
-    max-width: 71.93%;
-    height: 330px;
+    width: 88.12%;
+    height: 322px;
+    padding: 0 19px;
+    margin-top: 118px;
+  }
+
+  .modal__heading {
+    margin-bottom: 54px;
+    padding-left: 7%;
+    line-height: 29.05px;
+    max-width: 238px;
+    height: 23px;
   }
 
   .modal__close-button {
@@ -100,5 +108,10 @@
     right: 8px;
     width: 26px;
     height: 26px;
+  }
+
+  .modal__save-button {
+    width: 84.4%;
+    height: 46px;
   }
 }
