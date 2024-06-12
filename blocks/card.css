@@ -17,6 +17,7 @@
   min-height: 361px;
   width: 100%;
   box-sizing: border-box;
+  position: relative;
 }
 
 .card__text-container {
@@ -36,7 +37,7 @@
   line-height: 29.05px;
 }
 
-.card__image-button {
+.card__like-button {
   background-image: url("../images/heart-disabled.svg");
   background-size: contain;
   background-position: center;
@@ -45,12 +46,12 @@
   height: 18px;
   border-style: none;
   background-color: #fff;
-  transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease-in-out;
   margin-left: auto;
   margin-right: 20px;
 }
 
-.card__image-button_active {
+.card__like-button_active {
   background-image: url("../images/heart-active.svg");
   background-size: contain;
   background-position: center;
@@ -63,8 +64,28 @@
   margin-right: 20px;
 }
 
-.card__image-button:hover {
+.card__like-button:hover {
   opacity: 0.5;
+  cursor: pointer;
+}
+
+.card__delete-button {
+  background-image: url("../images/delete.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border: none;
+  width: 18px;
+  height: 19.3px;
+  position: absolute;
+  right: 15px;
+  top: 18px;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.card__delete-button:hover {
+  opacity: 0.6;
   cursor: pointer;
 }
 

@@ -95,13 +95,28 @@
       </div>
     </div>
 
+    <div class="modal" id="preview-image-modal">
+      <div class="modal__container">
+        <button
+          class="modal__close-button"
+          id="preview-image-close-button"
+        ></button>
+        <img src="" alt="" class="modal__image" id="modal-image" />
+        <h2 class="modal__title" id="modal-title"></h2>
+      </div>
+    </div>
+
     <template id="card-template">
       <div class="card">
         <img src="" alt="" class="card__image" />
         <div class="card__text-container">
           <h3 class="card__title"></h3>
           <button
-            class="card__image-button card__image-button_active"
+            class="card__like-button card__like-button_active"
+            type="button"
+          ></button>
+          <button
+            class="card__delete-button card__delete-button_active"
             type="button"
           ></button>
         </div>

@@ -25,27 +25,34 @@ const initialCards = [
   },
 ];
 
-const profileEditButton = document.querySelector("#profile-edit-button");
-const profileEditModal = document.querySelector("#profile-edit-modal");
-const profileEditCloseButton = profileEditModal.querySelector(
-  "#profile-edit-close-button"
-);
-const addCardModal = document.querySelector("#add-card-modal");
-const addNewCardButton = document.querySelector(".profile__add-button");
-const addCardCloseButton = addCardModal.querySelector("#add-card-close-button");
+// Modals
 const profileName = document.querySelector(".profile__name");
 const profileTitle = document.querySelector(".profile__title");
 const profileNameInput = document.querySelector("#profile-name-input");
 const imageUrlInput = document.querySelector("#image-url-input");
 const profileTitleInput = document.querySelector("#profile-title-input");
+const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileEditForm = profileEditModal.querySelector("#profile-modal-form");
+const addCardModal = document.querySelector("#add-card-modal");
 const addCardForm = addCardModal.querySelector("#add-card-form");
 const cardListEl = document.querySelector(".cards");
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
-console.log("cardTemplate");
 const cardTitleInput = addCardForm.querySelector("#card-title-input");
 const cardUrlInput = addCardForm.querySelector("#image-url-input");
+const previewImageModal = document.querySelector("#preview-Image-Modal");
+
+// Buttons
+
+const profileEditButton = document.querySelector("#profile-edit-button");
+const profileEditCloseButton = profileEditModal.querySelector(
+  "#profile-edit-close-button"
+);
+const addNewCardButton = document.querySelector(".profile__add-button");
+const addCardCloseButton = addCardModal.querySelector("#add-card-close-button");
+const previewImageCloseButton = document.querySelector(
+  "#preview-image-close-button"
+);
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
@@ -84,6 +91,35 @@ function getCardElement(cardData) {
   // access the card title and image and store them in variables
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
+  //set the like button
+  const likeButton = cardElement.querySelector(".card__like-button");
+  // find delete button
+  const deleteButton = cardElement.querySelector(".card__delete-button");
+
+  // add click listener to the cardImageEl element
+  // once clicked, use openModal with previewImageModal (search for it around line 43...type code in to search, dont literally search)
+
+  cardImageEl.addEventListener("click", () => {
+    const modalImage = previewImageModal.querySelector("#modal-image");
+    const modalTitle = previewImageModal.querySelector("#modal-title");
+    modalImage.src = cardData.link;
+    modalImage.alt = cardData.name;
+    modalTitle.textContent = cardData.name;
+    openModal(previewImageModal);
+  });
+
+  previewImageCloseButton.addEventListener("click", () =>
+    closeModal(previewImageModal)
+  );
+
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("card__like-button_active");
+  });
+
+  deleteButton.addEventListener("click", () => {
+    cardElement.remove("card__delete-button_active");
+  });
+
   // set the path to the image to the link field of the object
   cardImageEl.src = cardData.link;
   // set the image alt text to the name field of the object
