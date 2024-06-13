@@ -40,7 +40,7 @@ const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const cardTitleInput = addCardForm.querySelector("#card-title-input");
 const cardUrlInput = addCardForm.querySelector("#image-url-input");
-const previewImageModal = document.querySelector("#preview-Image-Modal");
+const previewImageModal = document.querySelector("#preview-image-modal");
 
 // Buttons
 
@@ -101,7 +101,9 @@ function getCardElement(cardData) {
 
   cardImageEl.addEventListener("click", () => {
     const modalImage = previewImageModal.querySelector("#modal-image");
-    const modalTitle = previewImageModal.querySelector("#modal-title");
+    const modalTitle = previewImageModal.querySelector(
+      "#modal-preview-image-title"
+    );
     modalImage.src = cardData.link;
     modalImage.alt = cardData.name;
     modalTitle.textContent = cardData.name;

@@ -90,19 +90,26 @@
             placeholder="Image URL"
             id="image-url-input"
           />
-          <button class="modal__save-button">Save</button>
+          <button class="modal__save-button">Create</button>
         </form>
       </div>
     </div>
 
+    <!-- Preview Image Modal -->
+
     <div class="modal" id="preview-image-modal">
-      <div class="modal__container">
-        <button
-          class="modal__close-button"
-          id="preview-image-close-button"
-        ></button>
-        <img src="" alt="" class="modal__image" id="modal-image" />
-        <h2 class="modal__title" id="modal-title"></h2>
+      <div class="modal__container modal__container_preview-image">
+        <div class="modal__image-wrapper">
+          <button
+            class="modal__close-button modal__close-button_preview-image"
+            id="preview-image-close-button"
+          ></button>
+          <img src="" alt="" class="modal__image" id="modal-image" />
+          <h2
+            class="modal__preview-image-title"
+            id="modal-preview-image-title"
+          ></h2>
+        </div>
       </div>
     </div>
 
