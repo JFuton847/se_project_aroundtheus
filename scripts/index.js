@@ -62,14 +62,14 @@ function closeModal(modal) {
   modal.classList.remove("modal_opened");
 }
 
-function handleCloseButtonClick(event) {
-  const modal = event.target.closest(".modal");
-  if (modal) {
-    closeModal(modal);
+document.addEventListener("click", (event) => {
+  if (event.target.classList.contains("modal__close-button")) {
+    const modal = event.target.closest(".modal");
+    if (modal) {
+      closeModal(modal);
+    }
   }
-}
-
-document.addEventListener("click", handleCloseButtonClick);
+});
 
 function renderCard(cardData, cardListEl) {
   const cardElement = getCardElement(cardData);
