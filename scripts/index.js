@@ -41,6 +41,7 @@ const cardTemplate =
 const cardTitleInput = addCardForm.querySelector("#card-title-input");
 const cardUrlInput = addCardForm.querySelector("#image-url-input");
 const previewImageModal = document.querySelector("#preview-image-modal");
+const modalContainer = document.querySelector(".modal__container");
 
 // Buttons
 
@@ -69,6 +70,7 @@ document.addEventListener("click", (event) => {
       closeModal(modal);
     }
   }
+  document.removeEventListener("click", handleClick);
 });
 
 function renderCard(cardData, cardListEl) {
