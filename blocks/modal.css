@@ -117,6 +117,10 @@
   border-bottom: 1px solid #ff0000;
 }
 
+.modal__error_visible {
+  visibility: visible;
+}
+
 .modal__save-button {
   margin-top: 13px;
   width: 83.25%;
