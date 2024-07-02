@@ -103,6 +103,10 @@
   align-items: center;
 }
 
+.modal__form_type_error {
+  border-bottom: 1px solid #ff0000;
+}
+
 .modal__form-input {
   border: none;
   border-bottom: 1px solid rgb(84 84 84 / 0.7);

@@ -27,12 +27,24 @@ function hasInvalidInput(inputList) {
   return !inputList.every((inputEl) => inputEl.validity.valid);
 }
 
-document.addEventListener("keydown", (evt) => {
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", handleEscClose);
+}
+
+// Function to handle the Escape key press
+function handleEscClose(evt) {
   if (evt.key === "Escape") {
     const openModals = document.querySelectorAll(".modal_opened");
     openModals.forEach((modal) => closeModal(modal));
   }
-});
+}
+
+// Function to open the modal
+function openModal(modal) {
+  modal.classList.add("modal_opened");
+  document.addEventListener("keydown", handleEscClose);
+}
 
 //Why is save button not disabled at first?
 //create 2 new functions to do the below enabling/disabling via functions
