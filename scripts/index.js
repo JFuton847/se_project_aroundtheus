@@ -57,11 +57,21 @@ const previewImageCloseButton = document.querySelector(
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  {
+  }
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
 }
+
+modalDivs.forEach((modalDiv) => {
+  modalDiv.addEventListener("mousedown", (event) => {
+    if (event.target.classList.contains("modal")) {
+      closeModal(modalDiv);
+    }
+  });
+});
 
 modalDivs.forEach((modalDiv) => {
   modalDiv.addEventListener("click", (event) => {

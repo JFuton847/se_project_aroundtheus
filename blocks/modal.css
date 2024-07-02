@@ -78,6 +78,16 @@
   cursor: pointer;
 }
 
+.modal__form_error {
+  font-size: 12px;
+  line-height: 15px;
+  color: #ff0000;
+  position: absolute;
+  top: 130px;
+  left: 36px;
+  transition: opacity 0.3s;
+}
+
 .modal__heading {
   margin-bottom: 54px;
   padding-left: 35px;
@@ -118,6 +128,12 @@
 .modal__save-button:hover {
   opacity: 0.8;
   cursor: pointer;
+}
+
+.modal__save-button_disabled {
+  opacity: 0.2;
+  background-color: #fff;
+  color: #000;
 }
 
 @media screen and (max-width: 635px) {

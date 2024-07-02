@@ -50,22 +50,35 @@
           id="profile-edit-close-button"
         ></button>
         <h2 class="modal__heading">Edit profile</h2>
-        <form class="modal__form" id="profile-modal-form">
+        <form
+          class="modal__form modal__form_type_error"
+          id="profile-modal-form"
+        >
           <input
             type="text"
             name="name"
             class="modal__form-input"
             placeholder="Name"
             id="profile-name-input"
+            required
+            minlength="2"
+            maxlength="40"
           />
+          <span class="modal__form_error" id="profile-name-input-error"></span>
           <input
             type="text"
             name="title"
             class="modal__form-input"
             placeholder="Description"
             id="profile-title-input"
+            required
+            minlength="2"
+            maxlength="200"
           />
-          <button class="modal__save-button">Save</button>
+          <span class="modal__form_error" id="profile-title-input-error"></span>
+          <button class="modal__save-button modal__save-button_disabled">
+            Save
+          </button>
         </form>
       </div>
     </div>
@@ -82,15 +95,24 @@
             class="modal__form-input modal__form-input_type_title"
             placeholder="Title"
             id="card-title-input"
+            required
+            minlength="1"
+            maxlength="30"
           />
+          <span class="modal__form_error" id="card-title-input-error"></span>
           <input
             type="text"
             name="url"
             class="modal__form-input modal__form-input_type_url"
             placeholder="Image URL"
             id="image-url-input"
+            required
+            pattern="https?://.+"
           />
-          <button class="modal__save-button">Create</button>
+          <span class="modal__form_error" id="image-url-input-error"></span>
+          <button class="modal__save-button modal__save-button_disabled">
+            Create
+          </button>
         </form>
       </div>
     </div>
@@ -128,5 +150,6 @@
     </template>
 
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validation.js"></script>
   </body>
 </html>
