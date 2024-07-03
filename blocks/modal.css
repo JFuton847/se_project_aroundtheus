@@ -188,8 +188,6 @@
   .modal__heading {
     line-height: 21.78px;
     font-size: 18px;
-    margin-top: 25px;
-    margin-bottom: 75px;
     width: 238px;
   }
 
@@ -201,3 +199,8 @@
     width: 30px; 
 } */
 }
+margin-bottom: 54px;
+line-height: 29.05px;
+width: 330px;
+height: 23px;
+margin-top: 0;
