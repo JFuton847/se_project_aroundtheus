@@ -26,6 +26,8 @@
   margin: auto;
   width: 430px;
   height: 330px;
+  padding: 36px;
+  box-sizing: border-box;
 }
 
 .modal__container_preview-image {
@@ -83,24 +85,27 @@
   line-height: 15px;
   color: #ff0000;
   position: absolute;
-  top: 130px;
-  left: 36px;
+  bottom: -20px;
+  left: 0;
   transition: opacity 0.3s;
 }
 
 .modal__heading {
   margin-bottom: 54px;
-  padding-left: 35px;
   line-height: 29.05px;
   width: 330px;
   height: 23px;
+  margin-top: 0;
 }
 
 .modal__form {
   display: flex;
   flex-direction: column;
   gap: 29.74px;
-  align-items: center;
+}
+
+.modal__label {
+  position: relative;
 }
 
 .modal__form-input {
@@ -110,7 +115,7 @@
   font-size: 14px;
   line-height: 16.94px;
   padding-bottom: 13.26px;
-  width: 83.25%;
+  width: 100%;
 }
 
 .modal__form-input_type_error {
