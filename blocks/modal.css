@@ -85,7 +85,6 @@
   line-height: 15px;
   color: #ff0000;
   position: absolute;
-  /* bottom: -20px; */
   top: calc(100% + 5px);
   left: 0;
   transition: opacity 0.3s;
@@ -102,7 +101,7 @@
 .modal__form {
   display: flex;
   flex-direction: column;
-  gap: 38px;
+  gap: 52px;
 }
 
 .modal__label {
@@ -153,8 +152,7 @@
 @media screen and (max-width: 635px) {
   .modal__container {
     width: 88.12%;
-    height: 322px;
-    margin-top: 115px;
+    height: 366px;
   }
 
   .modal__heading {
@@ -174,7 +172,7 @@
   }
 
   .modal__save-button {
-    width: 84.4%;
+    width: 100%;
     height: 46px;
   }
 }
@@ -182,7 +180,7 @@
 @media screen and (max-width: 595px) {
   .modal__container {
     width: 282px;
-    height: 322px;
+    height: 366px;
   }
 
   .modal__heading {
@@ -199,8 +197,3 @@
     width: 30px; 
 } */
 }
-margin-bottom: 54px;
-line-height: 29.05px;
-width: 330px;
-height: 23px;
-margin-top: 0;
