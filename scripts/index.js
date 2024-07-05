@@ -62,6 +62,7 @@ function openModal(modal) {
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", handleEscClose);
 }
 
 function handleEscClose(evt) {
