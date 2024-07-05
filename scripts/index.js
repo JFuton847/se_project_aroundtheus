@@ -57,12 +57,18 @@ const previewImageCloseButton = document.querySelector(
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
-  {
-  }
+  document.addEventListener("keydown", handleEscClose);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+}
+
+function handleEscClose(evt) {
+  if (evt.key === "Escape") {
+    const openModals = document.querySelectorAll(".modal_opened");
+    openModals.forEach((modal) => closeModal(modal));
+  }
 }
 
 modalDivs.forEach((modalDiv) => {
