@@ -152,7 +152,7 @@
 @media screen and (max-width: 635px) {
   .modal__container {
     width: 88.12%;
-    height: 366px;
+    height: 322px;
   }
 
   .modal__heading {
@@ -180,7 +180,7 @@
 @media screen and (max-width: 595px) {
   .modal__container {
     width: 282px;
-    height: 366px;
+    height: 322px;
   }
 
   .modal__heading {
