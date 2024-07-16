@@ -101,10 +101,19 @@ modalDivs.forEach((modalDiv) => {
   });
 });
 
+function handleImageClick(name, link) {
+  const modalImage = previewImageModal.querySelector("#modal-image");
+  const modalTitle = previewImageModal.querySelector(
+    "#modal-preview-image-title"
+  );
+  modalImage.src = link;
+  modalImage.alt = name;
+  modalTitle.textContent = name;
+  openModal(previewImageModal);
+}
+
 function renderCard(cardData, cardListEl) {
-  const card = new Card(cardData, "#card-template", () => {
-    console.log("click");
-  });
+  const card = new Card(cardData, "#card-template", handleImageClick);
   const cardElement = card.getView();
   cardListEl.prepend(cardElement);
 }
@@ -144,15 +153,15 @@ function handleAddCardFormSubmit(evt) {
 //   // once clicked, use openModal with previewImageModal (search for it around line 43...type code in to search, dont literally search)
 
 //   cardImageEl.addEventListener("click", () => {
-    const modalImage = previewImageModal.querySelector("#modal-image");
-    const modalTitle = previewImageModal.querySelector(
-      "#modal-preview-image-title"
-    );
-    modalImage.src = cardData.link;
-    modalImage.alt = cardData.name;
-    modalTitle.textContent = cardData.name;
-    openModal(previewImageModal);
-  });
+//   const modalImage = previewImageModal.querySelector("#modal-image");
+//   const modalTitle = previewImageModal.querySelector(
+//     "#modal-preview-image-title"
+//   );
+//   modalImage.src = cardData.link;
+//   modalImage.alt = cardData.name;
+//   modalTitle.textContent = cardData.name;
+//   openModal(previewImageModal);
+// });
 
 //   // previewImageCloseButton.addEventListener("click", () =>
 //   //   closeModal(previewImageModal)

@@ -23,14 +23,14 @@ export default class Card {
     this._cardElement
       .querySelector(".card__image")
       .addEventListener("click", () => {
-        this._handleImageClick();
+        this._handleImageClick(this._name, this._link);
       });
   }
 
   _handleLikeIcon() {
     this._cardElement
       .querySelector(".card__like-button")
-      .classList.toggle("card__like-button_is-active");
+      .classList.toggle("card__like-button_active");
   }
 
   _handleDeleteCard() {
