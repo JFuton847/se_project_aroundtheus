@@ -1,4 +1,5 @@
 import Card from "../components/card.js";
+import FormValidator from "../components/FormValidator.js";
 
 const initialCards = [
   {
@@ -199,3 +200,20 @@ profileEditForm.addEventListener("submit", handleProfileFormSubmit);
 addCardModal.addEventListener("submit", handleAddCardFormSubmit);
 
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
+
+const validationSettings = {
+  // formSelector: ".modal__form",
+  inputSelector: ".modal__form-input",
+  submitButtonSelector: ".modal__save-button",
+  inactiveButtonClass: "modal__save-button_disabled",
+  inputErrorClass: "modal__form-input_type_error",
+  errorClass: "modal__error_visible",
+};
+
+const editFormElement = editFormModalWindow.querySelector(".modal__form");
+const addFormElement = cardFormModalWindow.querySelector(".modal__form");
+const editFormValidator = new FormValidator(
+  validationSettings,
+  editFormElement
+);
+const addFormValidator = new FormValidator(validationSettings, addFormElement);

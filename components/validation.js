@@ -16,6 +16,7 @@ function hideInputError(formEl, inputEl, { inputErrorClass, errorClass }) {
 }
 
 function checkInputValidity(formEl, inputEl, options) {
+  // pass inputEl to show/hideInputError
   if (!inputEl.validity.valid) {
     return showInputError(formEl, inputEl, options);
   }
@@ -51,6 +52,7 @@ function setEventListeners(formEl, options) {
   const submitButton = formEl.querySelector(options.submitButtonSelector);
   inputEls.forEach((inputEl) => {
     inputEl.addEventListener("input", (e) => {
+      // You do have to pass inputEl as an argument
       checkInputValidity(formEl, inputEl, options);
       toggleButtonState(inputEls, submitButton, options);
     });
