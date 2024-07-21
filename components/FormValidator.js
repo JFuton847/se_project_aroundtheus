@@ -1,14 +1,3 @@
-// const config = {
-//   formSelector: ".modal__form",
-//   inputSelector: ".modal__form-input",
-//   submitButtonSelector: ".modal__save-button",
-//   inactiveButtonClass: "modal__save-button_disabled",
-//   inputErrorClass: "modal__form-input_type_error",
-//   errorClass: "modal__error_visible",
-// };
-
-// let a = new FormValidator(editModal, config)
-
 export default class FormValidator {
   constructor(formElement, settings) {
     // assign thing to this object
