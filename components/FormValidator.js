@@ -1,8 +1,19 @@
+// const config = {
+//   formSelector: ".modal__form",
+//   inputSelector: ".modal__form-input",
+//   submitButtonSelector: ".modal__save-button",
+//   inactiveButtonClass: "modal__save-button_disabled",
+//   inputErrorClass: "modal__form-input_type_error",
+//   errorClass: "modal__error_visible",
+// };
+
+// let a = new FormValidator(editModal, config)
+
 export default class FormValidator {
   constructor(formElement, settings) {
     // assign thing to this object
     this._formEl = formElement;
-    this._settings = settings;
+    // this._settings = settings;
     this._formSelector = settings.formSelector;
     this._inputSelector = settings.inputSelector;
     this._submitButtonSelector = settings.submitButtonSelector;
@@ -12,15 +23,12 @@ export default class FormValidator {
   }
 
   _checkInputValidity(inputEl) {
-    // pass inputEl to show/hideInputError
     if (!inputEl.validity.valid) {
       return this._showInputError(inputEl);
     } else {
       this._hideInputError(inputEl);
     }
   }
-
-  //REFACTOR
 
   _hideInputError(inputEl) {
     const errorMessageEl = this._formEl.querySelector(`#${inputEl.id}-error`);
@@ -29,59 +37,62 @@ export default class FormValidator {
     errorMessageEl.classList.remove(this._errorClass);
   }
 
-  _hasInvalidInput(inputEls) {
-    return inputEls.some((inputEl) => !inputEl.validity.valid);
-  }
-
-  _showInputError(inputEl, validationMessage) {
+  _showInputError(inputEl) {
     const errorMessageEl = this._formEl.querySelector(`#${inputEl.id}-error`);
     inputEl.classList.add(this._inputErrorClass);
     errorMessageEl.textContent = inputEl.validationMessage;
     errorMessageEl.classList.add(this._errorClass);
   }
 
-  // REFACTOR
-  _toggleButtonState(inputEls, submitButton) {
-    if (hasInvalidInput(inputEls)) {
-      disableButton(submitButton, this._inactiveButtonClass);
+  _hasInvalidInput() {
+    return this._inputEls.some((inputEl) => !inputEl.validity.valid);
+  }
+
+  _toggleButtonState() {
+    if (this._hasInvalidInput()) {
+      this.disableButton();
     } else {
-      enableButton(submitButton, this._inactiveButtonClass);
+      this._enableButton();
     }
   }
 
-  disableButton(button) {
-    button.classList.add(this._inactiveButtonClass);
-    button.disabled = true;
+  disableButton() {
+    this._submitButton.classList.add(this._inactiveButtonClass);
+    this._submitButton.disabled = true;
   }
 
-  _enableButton(button) {
-    button.classList.remove(this._inactiveButtonClass);
-    button.disabled = false;
+  _enableButton() {
+    this._submitButton.classList.remove(this._inactiveButtonClass);
+    this._submitButton.disabled = false;
   }
 
   _setEventListeners() {
     this._inputEls = [...this._formEl.querySelectorAll(this._inputSelector)];
     this._submitButton = this._formEl.querySelector(this._submitButtonSelector);
-    inputEls.forEach((inputEl) => {
+    this._inputEls.forEach((inputEl) => {
       inputEl.addEventListener("input", (e) => {
-        // You do have to pass inputEl as an argument
         this._checkInputValidity(inputEl);
-        this._toggleButtonState(inputEls, submitButton);
+        this._toggleButtonState();
       });
     });
 
-    toggleButtonState(inputEls, submitButton);
+    this._toggleButtonState();
   }
 
+  // _clearFormFields() {
+  //   this._inputEls.forEach((inputEl) => {
+  //     inputEl.value = "";
+  //     this._hideInputError(inputEl);
+  //   });
+  // }
+
   enableValidation() {
-    // const formEls = [...document.querySelectorAll(this._formSelector)];
-    // formEls.forEach((formEl) => {
     this._formEl.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._handleFormSubmission();
     });
 
-    this._setEventListeners(formElement);
+    this._setEventListeners(this._formEl);
     // look for all inputs inside of form
     // loop through all the inputs to see if all are valid
     // if input not valid
@@ -93,20 +104,8 @@ export default class FormValidator {
     // reset error msgs
     // });
   }
+
   _handleFormSubmission() {
-    // Add logic for successful submission here
-    if (!this._hasInvalidInput(this._inputEls)) {
-      // Simulate successful submission
-      console.log("Form submitted successfully!");
-
-      // Clear the form fields
-      this._inputEls.forEach((inputEl) => {
-        inputEl.value = "";
-        this._hideInputError(inputEl);
-      });
-
-      // Disable the submit button
-      this._disableButton(this._submitButton);
-    }
+    this.disableButton();
   }
 }

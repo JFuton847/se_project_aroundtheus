@@ -66,6 +66,29 @@ const previewImageCloseButton = document.querySelector(
   "#preview-image-close-button"
 );
 
+const validationSettings = {
+  // formSelector: ".modal__form",
+  inputSelector: ".modal__form-input",
+  submitButtonSelector: ".modal__save-button",
+  inactiveButtonClass: "modal__save-button_disabled",
+  inputErrorClass: "modal__form-input_type_error",
+  errorClass: "modal__error_visible",
+};
+
+const editFormValidator = new FormValidator(
+  profileEditForm,
+  validationSettings
+);
+const addFormValidator = new FormValidator(addCardForm, validationSettings);
+addCardModal.addEventListener("submit", handleAddCardFormSubmit);
+addFormValidator.enableValidation();
+editFormValidator.enableValidation();
+
+// const Simba = new Lion("Simba", 2)
+// const Scar = new Lion ("Scar", 10);
+// const Mufasa = new Lion ("Mufasa", 11);
+// Simba.roarNow()
+
 function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", handleEscClose);
@@ -197,23 +220,6 @@ profileEditButton.addEventListener("click", () => {
 // );
 
 profileEditForm.addEventListener("submit", handleProfileFormSubmit);
-addCardModal.addEventListener("submit", handleAddCardFormSubmit);
+// addCardModal.addEventListener("submit", handleAddCardFormSubmit);
 
 initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
-
-const validationSettings = {
-  // formSelector: ".modal__form",
-  inputSelector: ".modal__form-input",
-  submitButtonSelector: ".modal__save-button",
-  inactiveButtonClass: "modal__save-button_disabled",
-  inputErrorClass: "modal__form-input_type_error",
-  errorClass: "modal__error_visible",
-};
-
-const editFormElement = editFormModalWindow.querySelector(".modal__form");
-const addFormElement = cardFormModalWindow.querySelector(".modal__form");
-const editFormValidator = new FormValidator(
-  validationSettings,
-  editFormElement
-);
-const addFormValidator = new FormValidator(validationSettings, addFormElement);
