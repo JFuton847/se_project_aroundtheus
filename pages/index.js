@@ -28,14 +28,6 @@ const initialCards = [
   },
 ];
 
-const cardData = {
-  name: "Yosemite Valley",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-};
-
-const card = new Card(cardData, "#card-template");
-card.getView();
-
 // Modals
 const profileName = document.querySelector(".profile__name");
 const profileTitle = document.querySelector(".profile__title");
@@ -136,14 +128,19 @@ function handleImageClick(name, link) {
   openModal(previewImageModal);
 }
 
+addNewCardButton.addEventListener("click", () => openModal(addCardModal));
+// addCardCloseButton.addEventListener("click", () => closeModal(addCardModal));
+
 function renderCard(cardData, cardListEl) {
-  const card = new Card(cardData, "#card-template", handleImageClick);
-  const cardElement = card.getView();
+  const cardElement = createCard(cardData);
   cardListEl.prepend(cardElement);
 }
 
-addNewCardButton.addEventListener("click", () => openModal(addCardModal));
-// addCardCloseButton.addEventListener("click", () => closeModal(addCardModal));
+function createCard(item) {
+  const cardElement = new Card(item, "#card-template", handleImageClick);
+  // new stuff
+  return cardElement.getView();
+}
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();

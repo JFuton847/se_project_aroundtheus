@@ -89,10 +89,10 @@ export default class FormValidator {
   enableValidation() {
     this._formEl.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      this._handleFormSubmission();
+      this.disableButton();
     });
 
-    this._setEventListeners(this._formEl);
+    this._setEventListeners();
     // look for all inputs inside of form
     // loop through all the inputs to see if all are valid
     // if input not valid
@@ -103,9 +103,5 @@ export default class FormValidator {
     // if all inputs are valid
     // reset error msgs
     // });
-  }
-
-  _handleFormSubmission() {
-    this.disableButton();
   }
 }

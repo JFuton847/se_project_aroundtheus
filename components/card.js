@@ -20,11 +20,9 @@ export default class Card {
         this._handleDeleteCard();
       });
     // TODO - add listener for image element
-    this._cardElement
-      .querySelector(".card__image")
-      .addEventListener("click", () => {
-        this._handleImageClick(this._name, this._link);
-      });
+    this._cardImageEl.addEventListener("click", () => {
+      this._handleImageClick(this._name, this._link);
+    });
   }
 
   _handleLikeIcon() {
