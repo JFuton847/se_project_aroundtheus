@@ -7,24 +7,17 @@
     <meta name="description" content="Around the US" />
     <meta name="keywords" content="Around, the, US" />
     <meta name="author" content="James Petersen" />
-    <link rel="stylesheet" href="pages/index.css" />
     <link rel="icon" href="favicon.ico" />
   </head>
   <body class="page">
     <header class="header">
-      <img
-        src="./images/logo.png"
-        alt="Around the US Logo"
-        class="header__logo"
-      />
+      <img alt="Around the US Logo" class="header__logo"
+      src="<%=require("./images/logo.png")%>" />
     </header>
     <main class="content">
       <section class="profile">
-        <img
-          src="images/jacques-cousteau.jpg"
-          alt="Jacques Cousteau"
-          class="profile__avatar"
-        />
+        <img src="<%=require("./images/jacques-cousteau.jpg")%>" alt="Jacques
+        Cousteau" class="profile__avatar" />
         <div class="profile__info">
           <h1 class="profile__name">Jacques Cousteau</h1>
           <button
@@ -159,7 +152,5 @@
         </div>
       </div>
     </template>
-
-    <script src="./pages/index.js" type="module"></script>
   </body>
 </html>
