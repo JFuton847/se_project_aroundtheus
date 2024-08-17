@@ -5,7 +5,7 @@ import Popup from "../components/Popup.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import "../pages/index.css";
-import "../utils/constants.js";
+import { initialCards, validationSettings } from "../utils/constants.js";
 
 // Modals
 const profileName = document.querySelector(".profile__name");
