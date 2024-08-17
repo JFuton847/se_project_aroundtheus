@@ -113,24 +113,24 @@ profileEditButton.addEventListener("click", () => {
 //   }
 // }
 
-modalDivs.forEach((modalDiv) => {
-  modalDiv.addEventListener("mousedown", (event) => {
-    if (event.target.classList.contains("modal")) {
-      closeModal(modalDiv);
-    }
-  });
-});
+// modalDivs.forEach((modalDiv) => {
+//   modalDiv.addEventListener("mousedown", (event) => {
+//     if (event.target.classList.contains("modal")) {
+//       closeModal(modalDiv);
+//     }
+//   });
+// });
 
-modalDivs.forEach((modalDiv) => {
-  modalDiv.addEventListener("click", (event) => {
-    if (event.target.classList.contains("modal__close-button")) {
-      const modal = event.target.closest(".modal");
-      if (modal) {
-        closeModal(modal);
-      }
-    }
-  });
-});
+// modalDivs.forEach((modalDiv) => {
+//   modalDiv.addEventListener("click", (event) => {
+//     if (event.target.classList.contains("modal__close-button")) {
+//       const modal = event.target.closest(".modal");
+//       if (modal) {
+//         closeModal(modal);
+//       }
+//     }
+//   });
+// });
 
 const previewImageModal = new PopupWithImage("#preview-image-modal");
 previewImageModal.setEventListeners();
