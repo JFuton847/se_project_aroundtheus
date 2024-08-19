@@ -5,7 +5,7 @@ class UserInfo {
   }
   getUserInfo() {
     return {
-      name: this._profileNameElement.textContent,
+      name: this._profileName.textContent,
       title: this._profileTitle.textContent,
     };
   }
