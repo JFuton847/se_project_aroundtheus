@@ -21,13 +21,13 @@ class PopupWithForm extends Popup {
       event.preventDefault();
       const formData = this._getInputValues();
       this._handleFormSubmit(formData);
+      this._popupForm.reset();
       this.close();
     });
     super.setEventListeners();
   }
 
   close() {
-    this._popupForm.reset();
     super.close();
   }
 }
