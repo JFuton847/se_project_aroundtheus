@@ -78,12 +78,8 @@ editFormValidator.enableValidation();
 const handleFormSubmit = (formData) => {
   const name = formData.title;
   const link = formData.url;
-  const cardElement = new Card(
-    { name, link },
-    "#card-template",
-    handleImageClick
-  );
-  cardListEl.prepend(cardElement.getView());
+  const cardElement = createCard({ name, link });
+  cardListEl.prepend(cardElement);
 };
 
 const newCardPopup = new PopupWithForm("#add-card-modal", handleFormSubmit);
@@ -239,6 +235,6 @@ function createCard(item) {
 // initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
 
 initialCards.forEach((cardData) => {
-  const cardElement = new Card(cardData, "#card-template", handleImageClick);
-  cardListEl.prepend(cardElement.getView());
+  const cardElement = createCard(cardData);
+  cardListEl.prepend(cardElement);
 });
