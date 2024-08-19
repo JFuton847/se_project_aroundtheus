@@ -6,6 +6,7 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import "../pages/index.css";
 import { initialCards, validationSettings } from "../utils/constants.js";
+import Section from "../components/Section.js";
 
 // Modals
 const profileName = document.querySelector(".profile__name");
@@ -234,7 +235,11 @@ function createCard(item) {
 
 // initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
 
-initialCards.forEach((cardData) => {
-  const cardElement = createCard(cardData);
-  cardListEl.prepend(cardElement);
-});
+const section = new Section({ items: initialCards, renderer }, ".cards");
+
+function renderer(item) {
+  const cardElement = createCard(item);
+  section.addItem(cardElement);
+}
+
+section.renderItems();
