@@ -40,8 +40,10 @@ const previewImageCloseButton = document.querySelector(
 const profileEditPopup = new PopupWithForm(
   "#profile-edit-modal",
   (formData) => {
-    profileName.textContent = formData["name"];
-    profileTitle.textContent = formData["title"];
+    userInfo.setUserInfo({
+      name: formData["name"],
+      title: formData["title"],
+    });
     profileEditPopup.close();
   }
 );
@@ -141,7 +143,7 @@ function handleImageClick(name, link) {
 
 const userInfo = new UserInfo({
   profileNameSelector: ".profile__name",
-  jobElementSelector: ".profile__title",
+  titleSelector: ".profile__title",
 });
 
 // function handleImageClick(name, link) {
