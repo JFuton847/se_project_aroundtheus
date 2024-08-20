@@ -66,6 +66,7 @@ const handleFormSubmit = (formData) => {
   const name = formData.title;
   const link = formData.url;
   const cardElement = createCard({ name, link });
+  section.addItem(cardElement);
 };
 
 const newCardPopup = new PopupWithForm("#add-card-modal", handleFormSubmit);
