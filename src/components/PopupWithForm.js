@@ -27,16 +27,9 @@ class PopupWithForm extends Popup {
     super.setEventListeners();
   }
 
-  close() {
-    super.close();
-  }
+  // close() {
+  //   super.close();
+  // }
 }
 
 export default PopupWithForm;
-
-// index.js
-
-// const newCardPopup = new PopupWithForm("#add-card-modal", () => {});
-// newCardPopup.open();
-
-// newCardPopup.close();
