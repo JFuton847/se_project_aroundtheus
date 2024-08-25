@@ -8,6 +8,8 @@ import "../pages/index.css";
 import { initialCards, validationSettings } from "../utils/constants.js";
 import Section from "../components/Section.js";
 
+//Test Text For Project 9 Changes
+
 // Modals
 const profileName = document.querySelector(".profile__name");
 const profileTitle = document.querySelector(".profile__title");
