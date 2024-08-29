@@ -11,8 +11,8 @@ class UserInfo {
   }
 
   setUserInfo({ name, title }) {
-    this._profileName.textContent = name;
-    this._profileTitle.textContent = title;
+    this._profileName.textContent = name || this._profileName.textContent;
+    this._profileTitle.textContent = title || this._profileTitle.textContent;
   }
 }
 

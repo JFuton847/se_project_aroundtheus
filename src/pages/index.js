@@ -9,8 +9,6 @@ import { initialCards, validationSettings } from "../utils/constants.js";
 import Section from "../components/Section.js";
 import Api from "../components/Api.js";
 
-//Test Text For Project 9 Changes**
-
 // Modals
 const profileName = document.querySelector(".profile__name");
 const profileTitle = document.querySelector(".profile__title");
@@ -40,12 +38,23 @@ const previewImageCloseButton = document.querySelector(
 
 const profileEditPopup = new PopupWithForm(
   "#profile-edit-modal",
-  (formData) => {
+  async (formData) => {
     userInfo.setUserInfo({
       name: formData["name"],
       title: formData["title"],
     });
-    profileEditPopup.close();
+    api
+      .updateUserProfile(userData)
+      .then((updatedUserData) => {
+        userInfo.setUserInfo({
+          name: updatedUserData.name,
+          title: updatedUserData.title,
+        });
+        profileEditPopup.close();
+      })
+      .catch((err) => {
+        console.error(`ERROR UPDATING USER PROFILE ${err}`);
+      });
   }
 );
 
@@ -131,9 +140,32 @@ function createCard(item) {
     item,
     "#card-template",
     handleImageClick,
-    handleDeleteClick
+    handleDeleteClick,
+    handleLikeClick
   );
   return cardElement.getView();
+}
+
+function handleLikeClick(cardId, isLiked) {
+  if (isLiked) {
+    api
+      .dislikeACard(cardId)
+      .then((data) => {
+        document.querySelector(`[data-id="${cardId}"]`).updateLikes(data.likes);
+      })
+      .catch((err) => {
+        console.error(`ERROR DISLIKING CARD ${err}`);
+      });
+  } else {
+    api
+      .likeACard(cardId)
+      .then((data) => {
+        document.querySelector(`[data-id="${cardId}"]`).updateLikes(data.likes);
+      })
+      .catch((err) => {
+        console.error(`ERROR LIKING CARD ${err}`);
+      });
+  }
 }
 
 // const section = new Section({ items: initialCards, renderer }, ".cards");
@@ -166,3 +198,16 @@ api
     console.error(`ERROR FETCHING CARDS ${err}`);
   });
 // section.renderItems();
+
+api
+  .getUserInfo()
+  .then((userData) => {
+    console.log("Fetched user data:", userData);
+    userInfo.setUserInfo({
+      name: userData.name,
+      title: userData.title,
+    });
+  })
+  .catch((err) => {
+    console.error(`ERROR FETCHING USER INFO ${err}`);
+  });

@@ -38,7 +38,7 @@ export default class Api {
   }
 
   likeACard() {
-    return fetch(`${this._baseUrl}/cards/:cardId/likes`, {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "PUT",
       headers: this._headers,
     }).then(this._handleResponse);
@@ -50,5 +50,28 @@ export default class Api {
       headers: this._headers,
     }).then(this._handleResponse);
   }
-  // other methods for working with the API
+
+  // **User Info** //
+
+  getUserInfo() {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "GET",
+      headers: this._headers,
+    }).then(this._handleResponse);
+  }
+
+  updateUserProfile() {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify(userData),
+    }).then(this._handleResponse);
+  }
+
+  updateAvatar() {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+    }).then(this._handleResponse);
+  }
 }
