@@ -7,6 +7,7 @@ import UserInfo from "../components/UserInfo.js";
 import "../pages/index.css";
 import { initialCards, validationSettings } from "../utils/constants.js";
 import Section from "../components/Section.js";
+import Api from "../components/Api.js";
 
 //Test Text For Project 9 Changes**
 
@@ -64,11 +65,26 @@ const addFormValidator = new FormValidator(addCardForm, validationSettings);
 addFormValidator.enableValidation();
 editFormValidator.enableValidation();
 
+// const handleFormSubmit = (formData) => {
+//   const name = formData.title;
+//   const link = formData.url;
+//   const cardElement = createCard({ name, link });
+//   section.addItem(cardElement);
+// };
+
 const handleFormSubmit = (formData) => {
   const name = formData.title;
   const link = formData.url;
-  const cardElement = createCard({ name, link });
-  section.addItem(cardElement);
+  api
+    .createCards({ name, link })
+    .then((cardData) => {
+      const cardElement = createCard(cardData);
+      section.addItem(cardElement);
+      newCardPopup.close();
+    })
+    .catch((err) => {
+      console.error(`ERROR CREATING CARD ${err}`);
+    });
 };
 
 const newCardPopup = new PopupWithForm("#add-card-modal", handleFormSubmit);
@@ -93,17 +109,60 @@ function renderCard(cardData, cardListEl) {
   cardListEl.prepend(cardElement);
 }
 
+// function createCard(item) {
+//   const cardElement = new Card(item, "#card-template", handleImageClick);
+//   return cardElement.getView();
+// }
+
+function handleDeleteClick(cardId) {
+  api
+    .deleteCards(cardId)
+    .then(() => {
+      console.log(`Card with id ${cardId} deleted successfully`);
+      document.querySelector(`[data-id="${cardId}"]`).remove();
+    })
+    .catch((err) => {
+      console.error(`ERROR DELETING CARD ${err}`);
+    });
+}
+
 function createCard(item) {
-  const cardElement = new Card(item, "#card-template", handleImageClick);
-  // new stuff
+  const cardElement = new Card(
+    item,
+    "#card-template",
+    handleImageClick,
+    handleDeleteClick
+  );
   return cardElement.getView();
 }
 
-const section = new Section({ items: initialCards, renderer }, ".cards");
+// const section = new Section({ items: initialCards, renderer }, ".cards");
 
 function renderer(item) {
   const cardElement = createCard(item);
   section.addItem(cardElement);
 }
 
-section.renderItems();
+// section.renderItems();
+
+let section;
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "642370a4-ceb6-4d04-bc83-246d61a4c38e",
+    "Content-Type": "application/json",
+  },
+});
+
+api
+  .getInitialCards()
+  .then((cards) => {
+    console.log("Fetched cards:", cards);
+    section = new Section({ items: cards, renderer }, ".cards");
+    section.renderItems();
+  })
+  .catch((err) => {
+    console.error(`ERROR FETCHING CARDS ${err}`);
+  });
+// section.renderItems();
