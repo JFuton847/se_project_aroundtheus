@@ -60,7 +60,7 @@ export default class Api {
     }).then(this._handleResponse);
   }
 
-  updateUserProfile() {
+  updateUserProfile(userData) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,

@@ -39,16 +39,12 @@ const previewImageCloseButton = document.querySelector(
 const profileEditPopup = new PopupWithForm(
   "#profile-edit-modal",
   async (formData) => {
-    userInfo.setUserInfo({
-      name: formData["name"],
-      title: formData["title"],
-    });
     api
-      .updateUserProfile(userData)
+      .updateUserProfile(formData)
       .then((updatedUserData) => {
         userInfo.setUserInfo({
-          name: updatedUserData.name,
-          title: updatedUserData.title,
+          name: formData.name,
+          about: formData.about,
         });
         profileEditPopup.close();
       })
@@ -60,9 +56,9 @@ const profileEditPopup = new PopupWithForm(
 
 addNewCardButton.addEventListener("click", () => newCardPopup.open());
 document.querySelector("#profile-edit-button").addEventListener("click", () => {
-  const { name, title } = userInfo.getUserInfo();
+  const { name, about } = userInfo.getUserInfo();
   profileNameInput.value = name;
-  profileTitleInput.value = title;
+  profileTitleInput.value = about;
   profileEditPopup.open();
 });
 
@@ -82,7 +78,7 @@ editFormValidator.enableValidation();
 // };
 
 const handleFormSubmit = (formData) => {
-  const name = formData.title;
+  const name = formData.name;
   const link = formData.url;
   api
     .createCards({ name, link })
@@ -111,6 +107,7 @@ function handleImageClick(name, link) {
 const userInfo = new UserInfo({
   profileNameSelector: ".profile__name",
   titleSelector: ".profile__title",
+  avatarSelector: ".profile__avatar",
 });
 
 function renderCard(cardData, cardListEl) {
@@ -205,7 +202,7 @@ api
     console.log("Fetched user data:", userData);
     userInfo.setUserInfo({
       name: userData.name,
-      title: userData.title,
+      about: userData.about,
     });
   })
   .catch((err) => {
