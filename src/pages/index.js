@@ -40,7 +40,7 @@ const profileEditPopup = new PopupWithForm(
   "#profile-edit-modal",
   async (formData) => {
     api
-      .updateUserProfile(formData)
+      .updateUserProfile({ name: formData.name, about: formData.title })
       .then((updatedUserData) => {
         userInfo.setUserInfo({
           name: formData.name,
@@ -53,6 +53,19 @@ const profileEditPopup = new PopupWithForm(
       });
   }
 );
+
+const avatarEditPopup = new PopupWithForm("#avatar-edit-modal", (formData) => {
+  api
+    .updateAvatar({ avatar: formData.avatarUrl })
+    .then((userData) => {
+      userInfo.setUserInfo({ avatar: userData.avatar });
+      avatarEditPopup.close();
+    })
+    .catch((err) => {
+      console.error(`ERROR UPDATING AVATAR ${err}`);
+    });
+});
+avatarEditPopup.setEventListeners();
 
 addNewCardButton.addEventListener("click", () => newCardPopup.open());
 document.querySelector("#profile-edit-button").addEventListener("click", () => {

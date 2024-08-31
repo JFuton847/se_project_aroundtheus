@@ -2,6 +2,7 @@ class UserInfo {
   constructor({ profileNameSelector, titleSelector, avatarSelector }) {
     this._profileName = document.querySelector(profileNameSelector);
     this._profileTitle = document.querySelector(titleSelector);
+    this._profileAvatar = document.querySelector(".profile__avatar");
   }
   getUserInfo() {
     return {
