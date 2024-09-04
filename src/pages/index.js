@@ -25,7 +25,7 @@ const cardTemplate =
 const cardTitleInput = addCardForm.querySelector("#card-title-input");
 const cardUrlInput = addCardForm.querySelector("#image-url-input");
 const modalDivs = document.querySelectorAll(".modal");
-
+const avatarEditButton = document.querySelector("#avatar-edit-button");
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditCloseButton = profileEditModal.querySelector(
   "#profile-edit-close-button"
@@ -43,13 +43,11 @@ const profileEditPopup = new PopupWithForm(
       .updateUserProfile({
         name: formData.name,
         about: formData.about,
-        avatar: formData.avatar,
       })
       .then(() => {
         userInfo.setUserInfo({
           name: formData.name,
           about: formData.about,
-          avatar: formData.avatar,
         });
         profileEditPopup.close();
       })
@@ -59,18 +57,24 @@ const profileEditPopup = new PopupWithForm(
   }
 );
 
-// const avatarEditPopup = new PopupWithForm("#avatar-edit-modal", (formData) => {
-//   api
-//     .updateAvatar({ avatar: formData.avatarUrl })
-//     .then((userData) => {
-//       userInfo.setUserInfo({ avatar: userData.avatar });
-//       avatarEditPopup.close();
-//     })
-//     .catch((err) => {
-//       console.error(`ERROR UPDATING AVATAR ${err}`);
-//     });
-// });
-// avatarEditPopup.setEventListeners();
+const editAvatarPopup = new PopupWithForm(
+  "#update-avatar-modal",
+  (formData) => {
+    api
+      .updateAvatar({ avatar: formData.url })
+      .then((userData) => {
+        userInfo.setUserInfo({ avatar: userData.avatar });
+        editAvatarPopup.close();
+      })
+      .catch((err) => {
+        console.error(`ERROR UPDATING AVATAR ${err}`);
+      });
+  }
+);
+
+avatarEditButton.addEventListener("click", () => {
+  editAvatarPopup.open();
+});
 
 addNewCardButton.addEventListener("click", () => newCardPopup.open());
 document.querySelector("#profile-edit-button").addEventListener("click", () => {

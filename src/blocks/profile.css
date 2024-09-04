@@ -2,6 +2,12 @@
   background-color: #000;
   padding-top: 40px;
   display: flex;
+  /* New */
+  position: relative;
+}
+
+.profile__avatar-container {
+  position: relative;
 }
 
 .profile__avatar {
@@ -10,11 +16,36 @@
   border-radius: 50%;
   grid-area: avatar;
   object-fit: cover;
+  /* new */
+  transition: opacity 0.4s ease;
+  position: relative;
 }
+
+/* New */
 
 .profile__avatar:hover {
   opacity: 0.8;
   cursor: pointer;
+}
+
+.profile__avatar-edit-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 26px;
+  height: 26px;
+  background-image: url("../images/avatar-edit-button.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  cursor: pointer;
+}
+
+.profile__avatar-container:hover .profile__avatar-edit-icon {
+  opacity: 1;
 }
 
 .profile__info {
