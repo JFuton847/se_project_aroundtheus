@@ -61,9 +61,9 @@ const editAvatarPopup = new PopupWithForm(
   "#update-avatar-modal",
   (formData) => {
     api
-      .updateAvatar({ avatar: formData.url })
+      .updateAvatar({ avatar: formData.avatar })
       .then((userData) => {
-        userInfo.setUserInfo({ avatar: userData.avatar });
+        userInfo.setUserAvatar({ avatar: userData.avatar });
         editAvatarPopup.close();
       })
       .catch((err) => {
@@ -72,9 +72,12 @@ const editAvatarPopup = new PopupWithForm(
   }
 );
 
+// editAvatarPopup.setEventListeners();
 avatarEditButton.addEventListener("click", () => {
   editAvatarPopup.open();
 });
+
+editAvatarPopup.setEventListeners();
 
 addNewCardButton.addEventListener("click", () => newCardPopup.open());
 document.querySelector("#profile-edit-button").addEventListener("click", () => {
@@ -100,8 +103,9 @@ editFormValidator.enableValidation();
 // };
 
 const handleFormSubmit = (formData) => {
-  const name = formData.name;
+  const name = formData.title;
   const link = formData.url;
+  const avatar = formData.url;
   api
     .createCards({ name, link })
     .then((cardData) => {
@@ -255,6 +259,8 @@ api
     userInfo.setUserInfo({
       name: userData.name,
       about: userData.about,
+    });
+    userInfo.setUserAvatar({
       avatar: userData.avatar,
     });
   })
