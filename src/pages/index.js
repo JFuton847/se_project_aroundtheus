@@ -38,13 +38,18 @@ const previewImageCloseButton = document.querySelector(
 
 const profileEditPopup = new PopupWithForm(
   "#profile-edit-modal",
-  async (formData) => {
+  (formData) => {
     api
-      .updateUserProfile({ name: formData.name, about: formData.title })
-      .then((updatedUserData) => {
+      .updateUserProfile({
+        name: formData.name,
+        about: formData.about,
+        avatar: formData.avatar,
+      })
+      .then(() => {
         userInfo.setUserInfo({
           name: formData.name,
           about: formData.about,
+          avatar: formData.avatar,
         });
         profileEditPopup.close();
       })
@@ -54,18 +59,18 @@ const profileEditPopup = new PopupWithForm(
   }
 );
 
-const avatarEditPopup = new PopupWithForm("#avatar-edit-modal", (formData) => {
-  api
-    .updateAvatar({ avatar: formData.avatarUrl })
-    .then((userData) => {
-      userInfo.setUserInfo({ avatar: userData.avatar });
-      avatarEditPopup.close();
-    })
-    .catch((err) => {
-      console.error(`ERROR UPDATING AVATAR ${err}`);
-    });
-});
-avatarEditPopup.setEventListeners();
+// const avatarEditPopup = new PopupWithForm("#avatar-edit-modal", (formData) => {
+//   api
+//     .updateAvatar({ avatar: formData.avatarUrl })
+//     .then((userData) => {
+//       userInfo.setUserInfo({ avatar: userData.avatar });
+//       avatarEditPopup.close();
+//     })
+//     .catch((err) => {
+//       console.error(`ERROR UPDATING AVATAR ${err}`);
+//     });
+// });
+// avatarEditPopup.setEventListeners();
 
 addNewCardButton.addEventListener("click", () => newCardPopup.open());
 document.querySelector("#profile-edit-button").addEventListener("click", () => {
@@ -119,7 +124,7 @@ function handleImageClick(name, link) {
 
 const userInfo = new UserInfo({
   profileNameSelector: ".profile__name",
-  titleSelector: ".profile__title",
+  aboutSelector: ".profile__title",
   avatarSelector: ".profile__avatar",
 });
 
@@ -147,7 +152,7 @@ function handleDeleteClick(cardId) {
 
 function createCard(item) {
   const cardElement = new Card(
-    item,
+    { ...item, isLiked: item.isLiked },
     "#card-template",
     handleImageClick,
     handleDeleteClick,
@@ -156,25 +161,55 @@ function createCard(item) {
   return cardElement.getView();
 }
 
-function handleLikeClick(cardId, isLiked) {
-  if (isLiked) {
+function handleLikeClick(card) {
+  if (card.isLiked) {
     api
-      .dislikeACard(cardId)
-      .then((data) => {
-        document.querySelector(`[data-id="${cardId}"]`).updateLikes(data.likes);
+      .dislikeACard(card._id)
+      .then(() => {
+        card.unlikeCard();
+        card.isLiked = false;
       })
       .catch((err) => {
         console.error(`ERROR DISLIKING CARD ${err}`);
       });
   } else {
     api
-      .likeACard(cardId)
+      .likeACard(card._id)
       .then((data) => {
-        document.querySelector(`[data-id="${cardId}"]`).updateLikes(data.likes);
+        card.likeCard();
+        card.isLiked = true;
       })
       .catch((err) => {
         console.error(`ERROR LIKING CARD ${err}`);
       });
+  }
+}
+
+// function handleLikeIcon(card, cardId, isLiked) {
+//   const cardElement = document.querySelector(`[data-id="${cardId}"]`);
+//   if (cardElement) {
+//     const card = cardElement.__cardInstance;
+//     if (card && typeof card.handleLikeIcon === "function") {
+//       card.handleLikeIcon(isLiked);
+//     }
+//   }
+// }
+
+function handleLikeIcon(cardId, isLiked) {
+  const cardElement = document.querySelector(`[data-id="${cardId}"]`);
+  if (cardElement) {
+    const card = cardElement.__cardInstance;
+    if (
+      card &&
+      typeof card.likeCard === "function" &&
+      typeof card.unlikeCard === "function"
+    ) {
+      if (isLiked) {
+        card.likeCard();
+      } else {
+        card.unlikeCard();
+      }
+    }
   }
 }
 
@@ -216,6 +251,7 @@ api
     userInfo.setUserInfo({
       name: userData.name,
       about: userData.about,
+      avatar: userData.avatar,
     });
   })
   .catch((err) => {

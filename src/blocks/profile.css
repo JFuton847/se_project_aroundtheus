@@ -12,6 +12,11 @@
   object-fit: cover;
 }
 
+.profile__avatar:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
 .profile__info {
   margin-left: 30px;
   display: grid;
