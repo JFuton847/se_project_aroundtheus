@@ -24,12 +24,14 @@ export default class Card {
         e.stopPropagation();
         this.handleLikeClick(this);
       });
-    //".card__delete-button"
+    // (".card__delete-button");
     this._cardElement
       .querySelector(".card__delete-button")
       .addEventListener("click", (e) => {
         e.stopPropagation();
-        this._handleDeleteCard(this._id);
+        // call the function passed as an argument
+        // pass this as argument
+        this.handleDeleteClick(this._id);
       });
     // TODO - add listener for image element
     this._cardElement.addEventListener("click", (e) => {
@@ -131,7 +133,8 @@ export default class Card {
   //   this._handleLikeIcon();
   // }
 
-  _handleDeleteCard() {
+  // turn into public method and call it after succesful delete request
+  handleDeleteCard() {
     this._cardElement.remove();
     this._cardElement = null;
   }

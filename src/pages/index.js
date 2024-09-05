@@ -8,6 +8,7 @@ import "../pages/index.css";
 import { initialCards, validationSettings } from "../utils/constants.js";
 import Section from "../components/Section.js";
 import Api from "../components/Api.js";
+// import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
 // Modals
 const profileName = document.querySelector(".profile__name");
@@ -17,6 +18,8 @@ const imageUrlInput = document.querySelector("#image-url-input");
 const profileTitleInput = document.querySelector("#profile-title-input");
 const profileEditModal = document.querySelector("#profile-edit-modal");
 const profileEditForm = profileEditModal.querySelector("#profile-modal-form");
+const avatarEditModal = document.querySelector("#update-avatar-modal");
+const avatarEditForm = avatarEditModal.querySelector("#update-avatar-form");
 const addCardModal = document.querySelector("#add-card-modal");
 const addCardForm = addCardModal.querySelector("#add-card-form");
 const cardListEl = document.querySelector(".cards");
@@ -77,7 +80,9 @@ avatarEditButton.addEventListener("click", () => {
   editAvatarPopup.open();
 });
 
-editAvatarPopup.setEventListeners();
+editAvatarPopup.setEventListeners("click", () => {
+  editAvatarPopup.open();
+});
 
 addNewCardButton.addEventListener("click", () => newCardPopup.open());
 document.querySelector("#profile-edit-button").addEventListener("click", () => {
@@ -92,20 +97,18 @@ const editFormValidator = new FormValidator(
   validationSettings
 );
 const addFormValidator = new FormValidator(addCardForm, validationSettings);
+const avatarFormValidator = new FormValidator(
+  avatarEditForm,
+  validationSettings
+);
 addFormValidator.enableValidation();
 editFormValidator.enableValidation();
-
-// const handleFormSubmit = (formData) => {
-//   const name = formData.title;
-//   const link = formData.url;
-//   const cardElement = createCard({ name, link });
-//   section.addItem(cardElement);
-// };
+avatarFormValidator.enableValidation();
 
 const handleFormSubmit = (formData) => {
   const name = formData.title;
   const link = formData.url;
-  const avatar = formData.url;
+  // const avatar = formData.url;
   api
     .createCards({ name, link })
     .then((cardData) => {
@@ -116,6 +119,10 @@ const handleFormSubmit = (formData) => {
     .catch((err) => {
       console.error(`ERROR CREATING CARD ${err}`);
     });
+};
+
+const handleCardDelete = (cardId, cardElement) => {
+  confirmDeletePopup.open(cardId, cardElement); // Opens confirmation popup with card details
 };
 
 const newCardPopup = new PopupWithForm("#add-card-modal", handleFormSubmit);
@@ -140,18 +147,14 @@ function renderCard(cardData, cardListEl) {
   const cardElement = createCard(cardData);
   cardListEl.prepend(cardElement);
 }
-
-// function createCard(item) {
-//   const cardElement = new Card(item, "#card-template", handleImageClick);
-//   return cardElement.getView();
-// }
-
 function handleDeleteClick(cardId) {
+  console.log(`Attempting to delete card with id: ${cardId}`);
   api
-    .deleteCards(cardId)
+    .deleteCard(cardId)
     .then(() => {
       console.log(`Card with id ${cardId} deleted successfully`);
-      document.querySelector(`[data-id="${cardId}"]`).remove();
+      this.handleDeleteCard();
+      // call handleDeleteCard method
     })
     .catch((err) => {
       console.error(`ERROR DELETING CARD ${err}`);
@@ -244,7 +247,7 @@ api
   .getInitialCards()
   .then((cards) => {
     console.log("Fetched cards:", cards);
-    section = new Section({ items: cards, renderer }, ".cards");
+    section = new Section({ items: cards.reverse(), renderer }, ".cards");
     section.renderItems();
   })
   .catch((err) => {
