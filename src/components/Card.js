@@ -31,7 +31,7 @@ export default class Card {
         e.stopPropagation();
         // call the function passed as an argument
         // pass this as argument
-        this.handleDeleteClick(this._id);
+        this.handleDeleteClick(this._id, this._cardElement);
       });
     // TODO - add listener for image element
     this._cardElement.addEventListener("click", (e) => {

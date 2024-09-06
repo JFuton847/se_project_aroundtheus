@@ -8,7 +8,7 @@ import "../pages/index.css";
 import { initialCards, validationSettings } from "../utils/constants.js";
 import Section from "../components/Section.js";
 import Api from "../components/Api.js";
-// import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
 // Modals
 const profileName = document.querySelector(".profile__name");
@@ -80,9 +80,7 @@ avatarEditButton.addEventListener("click", () => {
   editAvatarPopup.open();
 });
 
-editAvatarPopup.setEventListeners("click", () => {
-  editAvatarPopup.open();
-});
+editAvatarPopup.setEventListeners();
 
 addNewCardButton.addEventListener("click", () => newCardPopup.open());
 document.querySelector("#profile-edit-button").addEventListener("click", () => {
@@ -147,18 +145,40 @@ function renderCard(cardData, cardListEl) {
   const cardElement = createCard(cardData);
   cardListEl.prepend(cardElement);
 }
-function handleDeleteClick(cardId) {
-  console.log(`Attempting to delete card with id: ${cardId}`);
-  api
-    .deleteCard(cardId)
-    .then(() => {
-      console.log(`Card with id ${cardId} deleted successfully`);
-      this.handleDeleteCard();
-      // call handleDeleteCard method
-    })
-    .catch((err) => {
-      console.error(`ERROR DELETING CARD ${err}`);
-    });
+
+//ORIGINAL VERSION OF DELETION
+// function handleDeleteClick(cardId) {
+//   console.log(`Attempting to delete card with id: ${cardId}`);
+//   api
+//     .deleteCard(cardId)
+//     .then(() => {
+//       console.log(`Card with id ${cardId} deleted successfully`);
+//       this.handleDeleteCard();
+//       // call handleDeleteCard method
+//     })
+//     .catch((err) => {
+//       console.error(`ERROR DELETING CARD ${err}`);
+//     });
+// }
+
+// NEW VERSION OF DELETION
+
+const confirmDeletePopup = new PopupWithConfirmation(
+  ".modal__confirm",
+  (cardId, cardElement) => {
+    api
+      .deleteCard(cardId)
+      .then(() => {
+        console.log(`Card with id ${cardId} deleted successfully`);
+        cardElement.remove(); // Remove the card from the DOM
+      })
+      .catch((err) => {
+        console.error(`ERROR DELETING CARD ${err}`);
+      });
+  }
+);
+function handleDeleteClick(cardId, cardElement) {
+  confirmDeletePopup.open(cardId, cardElement);
 }
 
 function createCard(item) {

@@ -24,14 +24,9 @@ export default class Popup {
   }
 
   setEventListeners() {
-    // Sets event listeners
-    this._popupElement.addEventListener("mousedown", (evt) => {
-      if (
-        evt.target.classList.contains("modal_opened") ||
-        evt.target.classList.contains("modal__close-button")
-      ) {
-        this.close();
-      }
-    });
+    const closeButton = this._popupElement.querySelector(
+      ".modal__close-button"
+    );
+    closeButton.addEventListener("click", () => this.close());
   }
 }

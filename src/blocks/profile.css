@@ -4,6 +4,9 @@
   display: flex;
   /* New */
   position: relative;
+  /* margin: 0; */
+  justify-content: center;
+  align-items: center;
 }
 
 .profile__avatar-container {
@@ -18,7 +21,9 @@
   object-fit: cover;
   /* new */
   transition: opacity 0.4s ease;
-  position: relative;
+  /* position: relative; */
+  justify-content: center;
+  align-items: center;
 }
 
 /* New */
@@ -121,9 +126,14 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 934px) {
+@media screen and (max-width: 879px) {
   .profile {
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   .profile__info {
@@ -167,6 +177,8 @@
 @media screen and (max-width: 635px) {
   .profile {
     flex-direction: column;
+    padding-left: 0px;
+    padding-right: 0px;
   }
 
   .profile__avatar {
