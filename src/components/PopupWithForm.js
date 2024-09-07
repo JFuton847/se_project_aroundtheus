@@ -36,7 +36,7 @@ class PopupWithForm extends Popup {
   }
 
   enableSubmitButton() {
-    this._submitButton.disabled = true;
+    this._submitButton.disabled = false;
   }
 
   setEventListeners() {
