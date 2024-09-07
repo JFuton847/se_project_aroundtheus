@@ -75,7 +75,6 @@ const editAvatarPopup = new PopupWithForm(
   }
 );
 
-// editAvatarPopup.setEventListeners();
 avatarEditButton.addEventListener("click", () => {
   editAvatarPopup.open();
 });
@@ -120,7 +119,7 @@ const handleFormSubmit = (formData) => {
 };
 
 const handleCardDelete = (cardId, cardElement) => {
-  confirmDeletePopup.open(cardId, cardElement); // Opens confirmation popup with card details
+  confirmDeletePopup.open(cardId, cardElement);
 };
 
 const newCardPopup = new PopupWithForm("#add-card-modal", handleFormSubmit);
@@ -145,21 +144,6 @@ function renderCard(cardData, cardListEl) {
   const cardElement = createCard(cardData);
   cardListEl.prepend(cardElement);
 }
-
-//ORIGINAL VERSION OF DELETION
-// function handleDeleteClick(cardId) {
-//   console.log(`Attempting to delete card with id: ${cardId}`);
-//   api
-//     .deleteCard(cardId)
-//     .then(() => {
-//       console.log(`Card with id ${cardId} deleted successfully`);
-//       this.handleDeleteCard();
-//       // call handleDeleteCard method
-//     })
-//     .catch((err) => {
-//       console.error(`ERROR DELETING CARD ${err}`);
-//     });
-// }
 
 // NEW VERSION OF DELETION
 
@@ -216,16 +200,6 @@ function handleLikeClick(card) {
   }
 }
 
-// function handleLikeIcon(card, cardId, isLiked) {
-//   const cardElement = document.querySelector(`[data-id="${cardId}"]`);
-//   if (cardElement) {
-//     const card = cardElement.__cardInstance;
-//     if (card && typeof card.handleLikeIcon === "function") {
-//       card.handleLikeIcon(isLiked);
-//     }
-//   }
-// }
-
 function handleLikeIcon(cardId, isLiked) {
   const cardElement = document.querySelector(`[data-id="${cardId}"]`);
   if (cardElement) {
@@ -244,14 +218,10 @@ function handleLikeIcon(cardId, isLiked) {
   }
 }
 
-// const section = new Section({ items: initialCards, renderer }, ".cards");
-
 function renderer(item) {
   const cardElement = createCard(item);
   section.addItem(cardElement);
 }
-
-// section.renderItems();
 
 let section;
 
@@ -273,7 +243,6 @@ api
   .catch((err) => {
     console.error(`ERROR FETCHING CARDS ${err}`);
   });
-// section.renderItems();
 
 api
   .getUserInfo()

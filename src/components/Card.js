@@ -40,122 +40,33 @@ export default class Card {
     });
   }
 
-  // make this a public method
-  // handleLikeIcon(isLiked) {
-  //   if (isLiked) {
-  //     this._cardElement
-  //       .querySelector(".card__like-button")
-  //       .classList.add("card__like-button_active");
-  //   } else {
-  //     this._cardElement
-  //       .querySelector(".card__like-button")
-  //       .classList.remove("card__like-button_active");
-  //   }
-  // }
-
-  // Use after successful like response (in a .then)
   likeCard() {
     this._cardElement
       .querySelector(".card__like-button")
       .classList.add("card__like-button_active");
   }
-  // use after successful unlike response (in a .then)
+
   unlikeCard() {
     this._cardElement
       .querySelector(".card__like-button")
       .classList.remove("card__like-button_active");
   }
 
-  // use where it is
   handleLikeIcon(isLiked) {
     if (isLiked !== undefined) {
       this.isLiked = isLiked;
     }
     if (this.isLiked) {
-      this._cardElement
-        .querySelector(".card__like-button")
-        .classList.add("card__like-button_active");
+      this.likeCard();
     } else {
-      this._cardElement
-        .querySelector(".card__like-button")
-        .classList.remove("card__like-button_active");
+      this.unlikeCard();
     }
   }
 
-  //1st version of handleLikeClick
-  // _handleLikeClick(cardId, isLiked) {
-  //   if (isLiked) {
-  //     api.dislikeACard(cardId).then((data) => {
-  //       this._updateLikes(data.likes);
-  //     });
-  //   } else {
-  //     api.likeACard(cardId).then((data) => {
-  //       this._updateLikes(data.likes);
-  //     });
-  //   }
-  // }
-
-  //2nd version of handleLikeClick
-  // handleLikeClick(cardId, isLiked) {
-  //   if (isLiked) {
-  //     api.dislikeACard(cardId).then(() => {
-  //       if (Array.isArray(data.likes)) {
-  //         this._updateLikes(data.likes);
-  //       } else {
-  //         console.error("Invalid data format for likes:", !isLiked);
-  //       }
-  //     });
-  //   } else {
-  //     api.likeACard(cardId).then((data) => {
-  //       if (Array.isArray(data.likes)) {
-  //         this._updateLikes(data.likes);
-  //       } else {
-  //         console.error("Invalid data format for likes:", !isLiked);
-  //       }
-  //     });
-  //   }
-  // }
-
-  // _handleLikeClick(cardId, isLiked) {
-  //   cardId._toggleLikeButton();
-  // }
-
-  // _updateLikes(likes) {
-  //   this._likes = likes;
-  //   this._cardElement.querySelector(".card__like-count").textContent =
-  //     likes.length;
-  //   this._cardElement
-  //     .querySelector(".card__like-button")
-  //     .classList.toggle(
-  //       "card__like-button_active",
-  //       this._likes.includes(this._id)
-  //     );
-  //   this._handleLikeIcon();
-  // }
-
-  // turn into public method and call it after succesful delete request
   handleDeleteCard() {
     this._cardElement.remove();
     this._cardElement = null;
   }
-
-  // getView() {
-  //   this._cardElement = document
-  //     .querySelector(this._cardSelector)
-  //     .content.querySelector(".card")
-  //     .cloneNode(true);
-  //   // TODO insert the src, alt text, and text content - DONE
-  //   this._cardImageEl = this._cardElement.querySelector(".card__image");
-  //   this._cardImageEl.src = this._link;
-  //   this._cardImageEl.alt = this._name;
-  //   this._cardTitleEl = this._cardElement.querySelector(".card__title");
-  //   this._cardTitleEl.textContent = this._name;
-
-  //   // set event listeners,
-  //   this._setEventListeners();
-  //   // TODO return the card
-  //   return this._cardElement;
-  // }
 
   _getTemplate() {
     const templateElement = document.querySelector(this._cardSelector);
@@ -171,6 +82,7 @@ export default class Card {
     this._setEventListeners();
     this._cardElement.querySelector(".card__image").src = this._link;
     this._cardElement.querySelector(".card__title").textContent = this._name;
+    this._cardElement.querySelector(".card__title").alt = this._name;
     console.log(this.isLiked);
     this.handleLikeIcon(this.isLiked);
 
