@@ -42,7 +42,7 @@ const previewImageCloseButton = document.querySelector(
 const profileEditPopup = new PopupWithForm(
   "#profile-edit-modal",
   (formData) => {
-    api
+    return api
       .updateUserProfile({
         name: formData.name,
         about: formData.about,
@@ -60,10 +60,21 @@ const profileEditPopup = new PopupWithForm(
   }
 );
 
+const newCardPopup = new PopupWithForm("#add-card-modal", (formData) => {
+  const name = formData.title;
+  const link = formData.url;
+
+  return api.createCards({ name, link }).then((cardData) => {
+    const cardElement = createCard(cardData);
+    section.addItem(cardElement);
+  });
+});
+newCardPopup.setEventListeners();
+
 const editAvatarPopup = new PopupWithForm(
   "#update-avatar-modal",
   (formData) => {
-    api
+    return api
       .updateAvatar({ avatar: formData.avatar })
       .then((userData) => {
         userInfo.setUserAvatar({ avatar: userData.avatar });
@@ -106,7 +117,7 @@ const handleFormSubmit = (formData) => {
   const name = formData.title;
   const link = formData.url;
   // const avatar = formData.url;
-  api
+  return api
     .createCards({ name, link })
     .then((cardData) => {
       const cardElement = createCard(cardData);
@@ -122,8 +133,8 @@ const handleCardDelete = (cardId, cardElement) => {
   confirmDeletePopup.open(cardId, cardElement);
 };
 
-const newCardPopup = new PopupWithForm("#add-card-modal", handleFormSubmit);
-newCardPopup.setEventListeners();
+// const newCardPopup = new PopupWithForm("#add-card-modal", handleFormSubmit);
+// newCardPopup.setEventListeners();
 
 profileEditPopup.setEventListeners();
 

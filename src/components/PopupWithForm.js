@@ -47,6 +47,7 @@ class PopupWithForm extends Popup {
       this.disableSubmitButton();
       this._handleFormSubmit(formData)
         .then(() => {
+          console.log(`Success:`, formData);
           this.close();
           this._popupForm.reset();
         })
