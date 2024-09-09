@@ -82,9 +82,7 @@ export default class Card {
     this._setEventListeners();
     this._cardElement.querySelector(".card__image").src = this._link;
     this._cardElement.querySelector(".card__title").textContent = this._name;
-    this._cardElement.querySelector(
-      ".card__title"
-    ).alt = `Image of ${this._name}`;
+    this._cardElement.alt = `Image of ${this._name}`;
     console.log(this.isLiked);
     this.handleLikeIcon(this.isLiked);
 

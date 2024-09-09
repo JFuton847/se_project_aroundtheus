@@ -52,10 +52,6 @@ const profileEditPopup = new PopupWithForm(
           name: formData.name,
           about: formData.about,
         });
-        profileEditPopup.close();
-      })
-      .catch((err) => {
-        console.error(`ERROR UPDATING USER PROFILE ${err}`);
       });
   }
 );
@@ -74,15 +70,9 @@ newCardPopup.setEventListeners();
 const editAvatarPopup = new PopupWithForm(
   "#update-avatar-modal",
   (formData) => {
-    return api
-      .updateAvatar({ avatar: formData.avatar })
-      .then((userData) => {
-        userInfo.setUserAvatar({ avatar: userData.avatar });
-        editAvatarPopup.close();
-      })
-      .catch((err) => {
-        console.error(`ERROR UPDATING AVATAR ${err}`);
-      });
+    return api.updateAvatar({ avatar: formData.avatar }).then((userData) => {
+      userInfo.setUserAvatar({ avatar: userData.avatar });
+    });
   }
 );
 
@@ -117,16 +107,10 @@ const handleCardFormSubmit = (formData) => {
   const name = formData.title;
   const link = formData.url;
   // const avatar = formData.url;
-  return api
-    .createCards({ name, link })
-    .then((cardData) => {
-      const cardElement = createCard(cardData);
-      section.addItem(cardElement);
-      newCardPopup.close();
-    })
-    .catch((err) => {
-      console.error(`ERROR CREATING CARD ${err}`);
-    });
+  return api.createCards({ name, link }).then((cardData) => {
+    const cardElement = createCard(cardData);
+    section.addItem(cardElement);
+  });
 };
 
 const handleCardDelete = (cardId, cardElement) => {
