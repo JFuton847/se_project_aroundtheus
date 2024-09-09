@@ -1,10 +1,10 @@
 import Popup from "./Popup.js";
 
 class PopupWithForm extends Popup {
-  constructor(popupSelector, handleFormSubmit) {
+  constructor(popupSelector, handleCardFormSubmit) {
     super(popupSelector);
     this._popupForm = this._popupElement.querySelector(".modal__form");
-    this._handleFormSubmit = handleFormSubmit;
+    this._handleCardFormSubmit = handleCardFormSubmit;
     this._inputList = this._popupForm.querySelectorAll(".modal__form-input");
     this._submitButton = this._popupForm.querySelector(".modal__save-button");
     this._submitButtonOriginalText = this._submitButton.textContent;
@@ -45,7 +45,7 @@ class PopupWithForm extends Popup {
       const formData = this._getInputValues();
       this.renderLoading(true);
       this.disableSubmitButton();
-      this._handleFormSubmit(formData)
+      this._handleCardFormSubmit(formData)
         .then(() => {
           console.log(`Success:`, formData);
           this.close();

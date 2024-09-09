@@ -113,7 +113,7 @@ addFormValidator.enableValidation();
 editFormValidator.enableValidation();
 avatarFormValidator.enableValidation();
 
-const handleFormSubmit = (formData) => {
+const handleCardFormSubmit = (formData) => {
   const name = formData.title;
   const link = formData.url;
   // const avatar = formData.url;
@@ -132,9 +132,6 @@ const handleFormSubmit = (formData) => {
 const handleCardDelete = (cardId, cardElement) => {
   confirmDeletePopup.open(cardId, cardElement);
 };
-
-// const newCardPopup = new PopupWithForm("#add-card-modal", handleFormSubmit);
-// newCardPopup.setEventListeners();
 
 profileEditPopup.setEventListeners();
 
