@@ -142,10 +142,9 @@ function renderCard(cardData, cardListEl) {
 const confirmDeletePopup = new PopupWithConfirmation(
   ".modal__confirm",
   (cardId, cardElement) => {
-    api
+    return api
       .deleteCard(cardId)
       .then(() => {
-        console.log(`Card with id ${cardId} deleted successfully`);
         cardElement.remove(); // Remove the card from the DOM
       })
       .catch((err) => {
@@ -153,6 +152,7 @@ const confirmDeletePopup = new PopupWithConfirmation(
       });
   }
 );
+
 function handleDeleteClick(cardId, cardElement) {
   confirmDeletePopup.open(cardId, cardElement);
 }
