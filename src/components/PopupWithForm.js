@@ -26,9 +26,9 @@ class PopupWithForm extends Popup {
     return formValues;
   }
 
-  open() {
-    super.open();
-  }
+  // open() {
+  //   super.open();
+  // }
 
   disableSubmitButton() {
     this._submitButton.disabled = true;
