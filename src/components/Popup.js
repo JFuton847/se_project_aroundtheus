@@ -23,8 +23,15 @@ export default class Popup {
     }
   }
 
+  // setEventListeners() {
+  //   this._popupElement.addEventListener("click", this._handleOverlay);
+  //   const closeButton = this._popupElement.querySelector(
+  //     ".modal__close-button"
+  //   );
+  //   closeButton.addEventListener("click", () => this.close());
+  // }
+
   setEventListeners() {
-    // Sets event listeners
     this._popupElement.addEventListener("mousedown", (evt) => {
       if (
         evt.target.classList.contains("modal_opened") ||

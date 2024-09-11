@@ -2,6 +2,15 @@
   background-color: #000;
   padding-top: 40px;
   display: flex;
+  /* New */
+  position: relative;
+  /* margin: 0; */
+  justify-content: center;
+  align-items: center;
+}
+
+.profile__avatar-container {
+  position: relative;
 }
 
 .profile__avatar {
@@ -10,6 +19,38 @@
   border-radius: 50%;
   grid-area: avatar;
   object-fit: cover;
+  /* new */
+  transition: opacity 0.4s ease;
+  /* position: relative; */
+  justify-content: center;
+  align-items: center;
+}
+
+/* New */
+
+.profile__avatar:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.profile__avatar-edit-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 26px;
+  height: 26px;
+  background-image: url("../images/avatar-edit-button.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  cursor: pointer;
+}
+
+.profile__avatar-container:hover .profile__avatar-edit-icon {
+  opacity: 1;
 }
 
 .profile__info {
@@ -85,9 +126,14 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 934px) {
+@media screen and (max-width: 879px) {
   .profile {
-    margin: 0 auto;
+    /* margin: 0 auto; */
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 
   .profile__info {
@@ -131,6 +177,8 @@
 @media screen and (max-width: 635px) {
   .profile {
     flex-direction: column;
+    padding-left: 0px;
+    padding-right: 0px;
   }
 
   .profile__avatar {
