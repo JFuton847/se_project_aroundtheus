@@ -76,15 +76,8 @@ export default class FormValidator {
   // }
 
   enableValidation() {
-    this._formEl.addEventListener("submit", (evt) => {
-      evt.preventDefault();
-      this.submitForm()
-        .then(() => {
-          this.disableButton();
-        })
-        .catch((err) => {
-          console.error("Form submission error:", err);
-        });
+    this._formEl.addEventListener("reset", () => {
+      this.disableButton();
     });
 
     this._setEventListeners();
